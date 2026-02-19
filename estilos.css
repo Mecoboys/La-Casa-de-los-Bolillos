@@ -6,6 +6,25 @@ body {
 }
 
 header {
+    background-color: #d8c3a5;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.logo {
+    width: 220px;      /* tamaño del logo */
+    max-width: 80%;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 0;
+    font-style: italic;
+}
+
+header {
     background-color: #d8c3a5; /* marrón claro */
     text-align: center;
     padding: 10px 5px;

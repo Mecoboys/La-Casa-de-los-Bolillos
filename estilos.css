@@ -8,7 +8,7 @@ body {
 header {
     background-color: #d8c3a5;
     text-align: center;
-    padding: 30px 10px;
+    padding: 50px 20px;
 }
 
 .logo {
@@ -19,8 +19,8 @@ header {
 }
 
 header p {
-    font-size: 1.2em;
-    margin: 0;
+    font-size: 1.3em;
+    margin-top: 10px;
     font-style: italic;
 }
 
@@ -38,23 +38,31 @@ header h1 {
 .productos {
     display: flex;
     justify-content: center;
-    gap: 25px;
-    padding: 40px;
+    gap: 40px;                 /* más espacio visual */
+    padding: 60px 40px;
     flex-wrap: wrap;
+    background-color: #f0e4d4; /* fondo suave */
 }
 
 .card {
     background-color: #fffaf3;
-    border-radius: 12px;
-    width: 100px;
+    border-radius: 15px;
+    width: 260px;              /* ⬅ más grande */
     text-align: center;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 25px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px); /* efecto pro */
 }
 
 .card img {
     width: 100%;
-    border-radius: 10px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
 .card h2 {
@@ -97,11 +105,12 @@ footer {
 /* Carrito */
 .carrito {
     background-color: #fffaf3;
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 300px;
-    margin: 20px auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    padding: 25px;
+    max-width: 350px;
+    margin: 30px auto;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    border: 2px dashed #8b5e3c; /* estilo artesanal */
 }
 
 .carrito h2 {

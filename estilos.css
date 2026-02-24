@@ -131,3 +131,18 @@ footer {
     font-weight: bold;
     margin-top: 10px;
 }
+
+.carrito button {
+    background-color: #8b5e3c;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.carrito button:hover {
+    background-color: #6f462c;
+}

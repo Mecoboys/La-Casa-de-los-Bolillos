@@ -7,39 +7,68 @@
 </head>
 <body>
 
-    <header>
+<header>
     <img src="img/logo.png" class="logo" alt="Logo La Casa de los Bolillos">
     <p>Bolillitos de frijoles y empanadas dulces</p>
+
+    <!-- Instagram -->
+    <div class="instagram">
+        <a href="https://www.instagram.com/tu_instagram" target="_blank">
+            📸 Síguenos en Instagram
+        </a>
+    </div>
 </header>
 
-    <main class="productos">
+<!-- Carrito -->
+<section class="carrito">
+    <h2>🛒 Carrito</h2>
+    <ul id="lista-carrito"></ul>
+    <p class="total">Total: $<span id="total">0</span></p>
+</section>
 
-        <div class="card">
-            <img src="img/bolillo-frijoles.jpg" alt="Bolillito relleno de frijoles">
-            <h2>Bolillito de Frijoles</h2>
-            <p>Calientito y relleno de frijoles refritos.</p>
-            <button>Comprar $22</button>
-        </div>
+<main class="productos">
 
-        <div class="card">
-            <img src="img/empanada-fresa.jpg" alt="Empanada de fresa">
-            <h2>Empanada de Fresa</h2>
-            <p>Dulce empanada rellena de fresa natural.</p>
-            <button>Comprar $20</button>
-        </div>
+    <div class="card">
+        <img src="img/bolillo-frijoles.jpg" alt="Bolillito relleno de frijoles">
+        <h2>Bolillito de Frijoles</h2>
+        <p>Calientito y relleno de frijoles refritos.</p>
+        <button onclick="agregar('Bolillito de Frijoles', 22)">Agregar $22</button>
+    </div>
 
-        <div class="card">
-            <img src="img/empanada-pina.jpg" alt="Empanada de piña">
-            <h2>Empanada de Piña</h2>
-            <p>Empanada tradicional con piña deliciosa.</p>
-            <button>Comprar $20</button>
-        </div>
+    <div class="card">
+        <img src="img/empanada-fresa.jpg" alt="Empanada de fresa">
+        <h2>Empanada de Fresa</h2>
+        <p>Dulce empanada rellena de fresa natural.</p>
+        <button onclick="agregar('Empanada de Fresa', 20)">Agregar $20</button>
+    </div>
 
-    </main>
+    <div class="card">
+        <img src="img/empanada-pina.jpg" alt="Empanada de piña">
+        <h2>Empanada de Piña</h2>
+        <p>Empanada tradicional con piña deliciosa.</p>
+        <button onclick="agregar('Empanada de Piña', 20)">Agregar $20</button>
+    </div>
 
-    <footer>
-        <p>© 2026 La Casa de los Bolillos</p>
-    </footer>
+</main>
+
+<footer>
+    <p>© 2026 La Casa de los Bolillos</p>
+</footer>
+
+<!-- JavaScript del carrito -->
+<script>
+    let total = 0;
+
+    function agregar(producto, precio) {
+        const lista = document.getElementById("lista-carrito");
+        const item = document.createElement("li");
+        item.textContent = producto + " - $" + precio;
+        lista.appendChild(item);
+
+        total += precio;
+        document.getElementById("total").textContent = total;
+    }
+</script>
 
 </body>
 </html>

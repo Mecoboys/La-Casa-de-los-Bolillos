@@ -61,8 +61,22 @@
 
     function agregar(producto, precio) {
         const lista = document.getElementById("lista-carrito");
+
         const item = document.createElement("li");
-        item.textContent = producto + " - $" + precio;
+        item.textContent = `${producto} - $${precio} `;
+
+        const boton = document.createElement("button");
+        boton.textContent = "❌";
+        boton.style.marginLeft = "10px";
+        boton.style.cursor = "pointer";
+
+        boton.onclick = function () {
+            lista.removeChild(item);
+            total -= precio;
+            document.getElementById("total").textContent = total;
+        };
+
+        item.appendChild(boton);
         lista.appendChild(item);
 
         total += precio;

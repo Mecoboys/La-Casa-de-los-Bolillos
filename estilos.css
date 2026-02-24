@@ -79,3 +79,46 @@ footer {
     padding: 15px;
     background-color: #d8c3a5;
 }
+/* Instagram */
+.instagram {
+    margin-top: 10px;
+}
+
+.instagram a {
+    color: #4a2e1f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.instagram a:hover {
+    text-decoration: underline;
+}
+
+/* Carrito */
+.carrito {
+    background-color: #fffaf3;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 300px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.carrito h2 {
+    margin-top: 0;
+}
+
+.carrito ul {
+    list-style: none;
+    padding: 0;
+}
+
+.carrito li {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 10px;
+}

@@ -1,87 +1,144 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>La Casa de los Bolillos</title>
-    <link rel="stylesheet" href="estilos.css">
+<meta charset="UTF-8">
+<title>La Casa de los Bolillos</title>
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-<header>
-    <img src="img/logo.png" class="logo" alt="Logo La Casa de los Bolillos">
-    <p>Bolillitos de frijoles y empanadas dulces</p>
+<!-- NAV -->
+<nav class="navbar">
+    <div class="nav-logo">🥖 La Casa de los Bolillos</div>
+    <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><button onclick="abrirLogin()">Login</button></li>
+        <li><button onclick="abrirCarrito()">🛒</button></li>
+    </ul>
+</nav>
 
-    <!-- Instagram -->
-    <div class="instagram">
-        <a href="https://www.instagram.com/lacasadelosbolillos?igsh=MTRIZHRoeXFwZGJuOA==" target="_blank">
-            📸 Síguenos en Instagram
-        </a>
-    </div>
-</header>
-
-<!-- Carrito -->
-<section class="carrito">
-    <h2>🛒 Carrito</h2>
-    <ul id="lista-carrito"></ul>
-    <p class="total">Total: $<span id="total">0</span></p>
+<!-- BANNER DINÁMICO -->
+<section class="banner">
+    <h1 id="banner-text">¡Bolillitos recién horneados!</h1>
 </section>
 
-<main class="productos">
+<!-- PRODUCTOS -->
+<main id="productos" class="productos">
 
     <div class="card">
-        <img src="img/bolillo-frijoles.jpg" alt="Bolillito relleno de frijoles">
+        <img src="img/bolillo-frijoles.jpg">
         <h2>Bolillito de Frijoles</h2>
-        <p>Calientito y relleno de frijoles refritos.</p>
-        <button onclick="agregar('Bolillito de Frijoles', 22)">Agregar $22</button>
+        <p>$22</p>
+        <button onclick="agregar('Bolillito de Frijoles',22)">Agregar</button>
     </div>
 
     <div class="card">
-        <img src="img/empanada-fresa.jpg" alt="Empanada de fresa">
+        <img src="img/empanada-fresa.jpg">
         <h2>Empanada de Fresa</h2>
-        <p>Dulce empanada rellena de fresa natural.</p>
-        <button onclick="agregar('Empanada de Fresa', 20)">Agregar $20</button>
+        <p>$20</p>
+        <button onclick="agregar('Empanada de Fresa',20)">Agregar</button>
     </div>
 
     <div class="card">
-        <img src="img/empanada-pina.jpg" alt="Empanada de piña">
+        <img src="img/empanada-pina.jpg">
         <h2>Empanada de Piña</h2>
-        <p>Empanada tradicional con piña deliciosa.</p>
-        <button onclick="agregar('Empanada de Piña', 20)">Agregar $20</button>
+        <p>$20</p>
+        <button onclick="agregar('Empanada de Piña',20)">Agregar</button>
     </div>
 
 </main>
 
+<!-- CARRITO OVERLAY -->
+<div class="carrito-overlay" id="carrito">
+    <div class="carrito-panel">
+        <h2>Tu Pedido</h2>
+        <ul id="lista-carrito"></ul>
+        <p>Total: $<span id="total">0</span></p>
+        <button onclick="simularCompra()">Finalizar compra</button>
+        <button onclick="cerrarCarrito()">Cerrar</button>
+    </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <h2>Iniciar Sesión</h2>
+        <input type="text" placeholder="Usuario">
+        <input type="password" placeholder="Contraseña">
+        <button onclick="cerrarLogin()">Entrar</button>
+    </div>
+</div>
+
+<!-- FORMULARIO CLIENTE -->
+<section id="contacto" class="formulario">
+    <h2>Haz tu pedido personalizado</h2>
+    <form>
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="tel" placeholder="Teléfono" required>
+        <textarea placeholder="Escribe tu pedido especial"></textarea>
+        <button type="submit">Enviar Pedido</button>
+    </form>
+</section>
+
+<!-- FOOTER -->
 <footer>
     <p>© 2026 La Casa de los Bolillos</p>
+    <a href="https://wa.me/524922443641" target="_blank" class="whatsapp">
+        📲 Pedir por WhatsApp
+    </a>
 </footer>
 
-<!-- JavaScript del carrito -->
 <script>
-    let total = 0;
+let total = 0;
 
-    function agregar(producto, precio) {
-        const lista = document.getElementById("lista-carrito");
+function agregar(producto, precio){
+    abrirCarrito();
+    const lista = document.getElementById("lista-carrito");
+    const item = document.createElement("li");
+    item.textContent = producto + " - $" + precio;
 
-        const item = document.createElement("li");
-        item.textContent = `${producto} - $${precio} `;
+    total += precio;
+    document.getElementById("total").textContent = total;
 
-        const boton = document.createElement("button");
-        boton.textContent = "❌";
-        boton.style.marginLeft = "10px";
-        boton.style.cursor = "pointer";
+    lista.appendChild(item);
+}
 
-        boton.onclick = function () {
-            lista.removeChild(item);
-            total -= precio;
-            document.getElementById("total").textContent = total;
-        };
+function abrirCarrito(){
+    document.getElementById("carrito").style.display="flex";
+}
 
-        item.appendChild(boton);
-        lista.appendChild(item);
+function cerrarCarrito(){
+    document.getElementById("carrito").style.display="none";
+}
 
-        total += precio;
-        document.getElementById("total").textContent = total;
-    }
+function simularCompra(){
+    alert("🎉 Compra realizada con éxito. ¡Gracias por tu pedido!");
+    document.getElementById("lista-carrito").innerHTML="";
+    total=0;
+    document.getElementById("total").textContent=0;
+    cerrarCarrito();
+}
+
+function abrirLogin(){
+    document.getElementById("loginModal").style.display="flex";
+}
+
+function cerrarLogin(){
+    document.getElementById("loginModal").style.display="none";
+}
+
+const textos = [
+    "¡Bolillitos recién horneados!",
+    "Empanadas dulces irresistibles",
+    "Sabor casero tradicional"
+];
+
+let i=0;
+setInterval(()=>{
+    i=(i+1)%textos.length;
+    document.getElementById("banner-text").textContent=textos[i];
+},3000);
 </script>
 
 </body>
